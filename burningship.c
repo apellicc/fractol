@@ -6,7 +6,7 @@
 /*   By: apellicc <apellicc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/24 13:23:14 by apellicc          #+#    #+#             */
-/*   Updated: 2016/05/27 07:18:14 by apellicc         ###   ########.fr       */
+/*   Updated: 2016/05/27 12:26:30 by apellicc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ static void		ft_draw_burningship(t_env *en)
 	en->i = 0;
 	while (en->z_r * en->z_r + en->z_i * en->z_i < 4 && en->i < en->max)
 	{
+		en->z_r = fabs(en->z_r);
+		en->z_i = fabs(en->z_i);
 		en->tmp = en->z_r;
 		en->z_r = en->z_r * en->z_r - en->z_i * en->z_i + en->c_r;
-		en->z_i = 2 * fabs(en->z_i * en->tmp) + en->c_i;
+		en->z_i = 2 * en->z_i * en->tmp + en->c_i;
 		en->i++;
 	}
 	a = en->bpl * en->y + en->x * 4;
